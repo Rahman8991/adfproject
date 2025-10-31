@@ -9,8 +9,8 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "txt",
-			"table": "Sales.txt"
+			"schema": "",
+			"table": "UpdatedSalesT"
 		}
 	}
 }
