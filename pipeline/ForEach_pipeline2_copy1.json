@@ -62,7 +62,25 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"waitOnCompletion": true
+								"pipeline": {
+									"referenceName": "ForEach_pipeline2",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"pp_container": {
+										"value": "@pipeline().parameters.pp_container",
+										"type": "Expression"
+									},
+									"pp_in_fol": {
+										"value": "@pipeline().parameters.pp_in_fol",
+										"type": "Expression"
+									},
+									"pp_out_fol": {
+										"value": "@pipeline().parameters.pp_out_fol",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
