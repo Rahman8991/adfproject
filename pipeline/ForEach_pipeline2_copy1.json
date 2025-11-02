@@ -63,7 +63,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "ForEach_pipeline2",
+									"referenceName": "CopyTo_parameter_pipeline1",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true,
@@ -72,11 +72,11 @@
 										"value": "@pipeline().parameters.pp_container",
 										"type": "Expression"
 									},
-									"pp_in_fol": {
+									"pp_inputfolder": {
 										"value": "@pipeline().parameters.pp_in_fol",
 										"type": "Expression"
 									},
-									"pp_out_fol": {
+									"pp_outputfolder": {
 										"value": "@pipeline().parameters.pp_out_fol",
 										"type": "Expression"
 									}
