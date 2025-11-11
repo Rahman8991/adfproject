@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "landing/unzip",
+				"folderPath": "landing/unzip/SalesLTProductModel.zip",
 				"fileSystem": "adfproject"
 			},
 			"columnDelimiter": ",",
