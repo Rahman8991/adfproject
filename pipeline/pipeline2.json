@@ -73,9 +73,7 @@
 						"referenceName": "Getmeta123",
 						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
 						"enablePartitionDiscovery": false
@@ -164,13 +162,7 @@
 							"outputs": [
 								{
 									"referenceName": "sinkd2",
-									"type": "DatasetReference",
-									"parameters": {
-										"filename": {
-											"value": "@concat(item().name,'.csv')",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}
