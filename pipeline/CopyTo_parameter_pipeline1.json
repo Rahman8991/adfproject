@@ -1,0 +1,202 @@
+{
+	"name": "CopyTo_parameter_pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Sourcedataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "@pipeline().parameters.pp_container",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.pp_inputfolder",
+								"type": "Expression"
+							},
+							"filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Sourcedataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "@pipeline().parameters.pp_container",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.pp_outputfolder",
+								"type": "Expression"
+							},
+							"filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy data2",
+				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Sourcedataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "@pipeline().parameters.pp_container",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.pp_outputfolder",
+								"type": "Expression"
+							},
+							"filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Sourcedataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "@pipeline().parameters.pp_container",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.pp_archivefolder",
+								"type": "Expression"
+							},
+							"filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"pp_container": {
+				"type": "string"
+			},
+			"pp_inputfolder": {
+				"type": "string"
+			},
+			"pp_outputfolder": {
+				"type": "string"
+			},
+			"pp_filename": {
+				"type": "string"
+			},
+			"pp_archivefolder": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "ADF_Proj"
+		},
+		"annotations": []
+	}
+}
